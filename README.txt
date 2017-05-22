@@ -1,2 +1,1 @@
-"Hello, Git" 
-Made an amendment
+This is a public repository for practice NLP python code.
