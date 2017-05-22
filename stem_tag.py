@@ -1,22 +1,21 @@
-from nltk.stem.lancaster import LancasterStemmer
-import nltk
-from nltk.corpus import stopwords
-from string import punctuation
-from nltk.tokenize import word_tokenize, sent_tokenize
-from nltk.collocations import *
-from nltk.corpus import wordnet as wn
+"""
+A quick few  lines of code utilising the lancaster stemmer and lesk modules.
+"""
 
-text2 = "Mary closed on closing night when she was in the mood to close."
-#print(text2)
-st = LancasterStemmer()
-stemmed_words = [st.stem(word) for word in word_tokenize(text2)]
-#print(stemmed_words)
-#print(nltk.pos_tag(word_tokenize(text2)))
+from nltk.stem.lancaster import LancasterStemmer
+from nltk.tokenize import word_tokenize
 from nltk.wsd import lesk
 
-sense1 = lesk(word_tokenize("Sing in a lower tone, along with the bass"), 'bass')
-print(sense1, sense1.definition())
+text1 = "Mary closed on closing night when she was in the mood to close."
+st = LancasterStemmer()
+stemmed_words = [st.stem(word) for word in word_tokenize(text1)]
 
-sense2 = lesk(word_tokenize("This sea bass was really hard to catch"), 'bass')
-print(sense2, sense2.definition())
-print(type(sense2))
+text2 = "Sing in a lower tone, along with the bass"
+print(text2)
+sense1 = lesk(word_tokenize(text2), 'bass')
+print("The meaning is: " + sense1.definition())
+
+text3 = "This sea bass was really hard to catch"
+print(text3)
+sense2 = lesk(word_tokenize(text3), 'bass')
+print("The meaning is: " + sense2.definition())
